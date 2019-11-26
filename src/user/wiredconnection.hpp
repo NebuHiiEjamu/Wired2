@@ -5,10 +5,10 @@
 #include "../net/forward.hpp"
 #include "../net/connection.hpp"
 
-class HLConnection : public Connection
+class WiredConnection : public Connection
 {
 public:
-	HLConnection(HivePtr, ListenerPtr);
+	WiredConnection(HivePtr, ListenerPtr);
 	void setSession(SessionRef);
 protected:
 	void onAccept(std::string_view, uint16) override;

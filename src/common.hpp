@@ -21,36 +21,4 @@ using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
 using uint64 = std::uint64_t;
 
-enum class Error : Byte
-{
-	internal = 0,
-	invalidMessage,
-	unrecognizedMessage,
-	messageOutOfSequence,
-	loginFailed,
-	permissionDenied,
-	notSubscribed,
-	alreadySubscribed,
-	chatNotFound,
-	alreadyOnChat,
-	notOnChat,
-	notInvitedToChat,
-	userNotFound,
-	userCantBeKicked,
-	fileNotFound,
-	fileExists,
-	accountNotFound,
-	accountExists,
-	accountInUse,
-	trackerNotEnabled,
-	notRegistered,
-	banNotFound,
-	banExists,
-	boardNotFound,
-	boardExists,
-	threadNotFound,
-	postNotFound,
-	rsrcNotSupported
-};
-
 #endif // _COMMON_H

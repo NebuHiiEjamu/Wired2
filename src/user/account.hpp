@@ -63,9 +63,9 @@ namespace Access
 		readAccounts,
 		createAccounts,
 		deleteAccounts,
-		createAccountGroups,
-		editAccountGroups,
-		deleteAccountGroups,
+		createGroups,
+		editGroups,
+		deleteGroups,
 		raisePrivileges,
 		viewLog,
 		viewEvents,
@@ -92,8 +92,8 @@ class Account : public std::enable_shared_from_this<Account>
 {
 public:
 private:
-	AccountGroupRef primaryGroup;
-	std::set<AccountGroupRef> secondaryGroups;
+	GroupRef primaryGroup;
+	std::set<GroupRef> secondaryGroups;
 	std::string name;
 	std::string fullName;
 	std::string comment;
@@ -113,7 +113,7 @@ private:
 	AccountColor color;
 };
 
-class AccountGroup : public std::enable_shared_from_this<AccountGroup>
+class Group : public std::enable_shared_from_this<AccountGroup>
 {
 public:
 private:

@@ -1,0 +1,4 @@
+#ifndef _RESOURCEFORK_H
+#define _RESOURCEFORK_H
+
+#endif // _RESOURCEFORK_H

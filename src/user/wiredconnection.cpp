@@ -1,42 +1,42 @@
-#include "hlconnection.hpp"
+#include "wiredconnection.hpp"
 #include "../net/hive.hpp"
 #include "../net/listener.hpp"
 #include "../net/packet.hpp"
 #include "../server.hpp"
 
-HLConnection::HLConnection(HivePtr hive, ListenerPtr listener):
+WiredConnection::WiredConnection(HivePtr hive, ListenerPtr listener):
 	Connection(hive),
 	listener(listener)
 {
 }
 
-void HLConnection::setSession(SessionRef session)
+void WiredConnection::setSession(SessionRef session)
 {
 	this->session = session;
 }
 
-void HLConnection::onAccept(std::string_view, uint16)
+void WiredConnection::onAccept(std::string_view, uint16)
 {
-	HLConnectionPtr connection(new HLConnection(hive, listener));
+	WiredConnectionPtr connection(new WiredConnection(hive, listener));
 	listener->accept(connection);
 
-	Server::getInstance()->createSession(id, std::dynamic_pointer_cast<HLConnection>
+	Server::getInstance()->createSession(id, std::dynamic_pointer_cast<WiredConnection>
 		shared_from_this()));
 }
 
-void HLConnection::onSend(const ByteString&)
+void WiredConnection::onSend(const ByteString&)
 {
 }
 
-void HLConnection::onReceive(ByteString &inString)
+void WiredConnection::onReceive(ByteString &inString)
 {
 	ByteBuffer buffer(inString);
 }
 
-void HLConnection::onError(Error)
+void WiredConnection::onError(Error)
 {
 }
 
-void HLConnection::onDisconnect()
+void WiredConnection::onDisconnect()
 {
 }

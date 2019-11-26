@@ -4,14 +4,14 @@
 #include <memory>
 
 class Account;
-class AccountGroup;
+class Group;
 class Session;
 class WiredConnection;
 
-using AccountGroupPtr = std::shared_ptr<AccountGroup>;
-using AccountGroupRef = std::weak_ptr<AccountGroup>;
 using AccountPtr = std::shared<Account>;
 using AccountRef = std::weak_ptr<Account>;
+using GroupPtr = std::shared_ptr<Group>;
+using GroupRef = std::weak_ptr<Group>;
 using SessionPtr = std::shared_ptr<Session>;
 using SessionRef = std::weak_ptr<Session>;
 using WiredConnectionPtr = std::shared_ptr<WiredConnection>;
