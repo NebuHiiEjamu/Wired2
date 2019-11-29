@@ -8,7 +8,7 @@
 class Session : public std::enable_shared_from_this<Session>
 {
 public:
-	Session(uint16, WiredConnectionPtr);
+	Session(suint32, WiredConnectionPtr);
 private:
 	AccountRef account;
 	WiredConnectionPtr connection;
@@ -24,6 +24,7 @@ private:
 	Timestamp loginTime;
 	Timestamp idleTime;
 	std::mutex mutex;
+	suint32 id;
 	bool idle;
 	bool rsrcSupported;
 };

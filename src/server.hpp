@@ -48,9 +48,9 @@ public:
 	static ServerRef getInstance();
 
 	~Server();
-	bool createSession(uint32, WiredConnectionPtr);
-	void removeSession(uint32);
-	uint32 getNextUserId();
+	bool createSession(suint32, WiredConnectionPtr);
+	void removeSession(suint32);
+	suint32 getNextUserId();
 	uint32 getUserCount();
 	std::string_view getDescription() const;
 	std::string_view getName() const;
@@ -62,12 +62,12 @@ private:
 	std::string name;
 	std::string description;
 	ByteString banner;
-	std::map<uint32, SessionPtr> sessionMap;
+	std::map<suint32, SessionPtr> sessionMap;
 	std::set<AccountPtr> accounts;
 	std::set<GroupPtr> groups;
 	sqlite3 *db;
 	std::mutex mutex;
-	uint32 nextUserId;
+	suint32 nextUserId;
 };
 
 #endif // _SERVER_H

@@ -2,6 +2,7 @@
 #define _COMMON_H
 
 #include <boost/asio.hpp>
+#include <boost/safe_numerics/safe_integer.hpp>
 #include <chrono>
 #include <cstdint>
 #include <mutex>
@@ -19,6 +20,7 @@ using Strand = boost::asio::io_context::strand;
 using Timestamp = std::chrono::time_point<std::chrono::system_clock>;
 using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
+using suint32 = boost::numeric::safe<uint32>;
 using uint64 = std::uint64_t;
 
 class ByteBuffer : std::enable_shared_from_this<ByteBuffer>

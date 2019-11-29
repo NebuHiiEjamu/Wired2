@@ -116,7 +116,7 @@ std::string&& Server::getOSVersion()
 	return std::move(result);
 }
 
-bool Server::createSession(uint32 id, WiredConnectionPtr connection)
+bool Server::createSession(suint32 id, WiredConnectionPtr connection)
 {
 	LockGuard lock(mutex);
 	SessionPtr newSession = std::make_shared<Session>(id, connection);
@@ -126,12 +126,12 @@ bool Server::createSession(uint32 id, WiredConnectionPtr connection)
 	return true;
 }
 
-void Server::removeSession(uint32 id)
+void Server::removeSession(suint32 id)
 {
 	sessionMap.erase(id);
 }
 
-uint32 Server::getNextUserId()
+suint32 Server::getNextUserId()
 {
 	LockGuard lock(mutex);
 	return nextUserId++;
