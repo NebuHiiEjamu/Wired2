@@ -15,7 +15,6 @@ using boost::asio;
 
 #if BOOST_OS_WINDOWS
 	struct OSVERSIONINFOEXA;
-	struct SYSTEM_INFO;
 #elif BOOST_OS_MACOS
 	using int32 = std::int32_t;
 #else
@@ -29,7 +28,6 @@ class Server final : public std::enable_shared_from_this<Server>
 public:
 #if BOOST_OS_WINDOWS
 	static OSVERSIONINFOEXA osVersionInfo;
-	static SYSTEM_INFO systemInfo;
 	static int osError;
 #elif BOOST_OS_MACOS
 	static int32 osVersionMajor;
@@ -39,7 +37,12 @@ public:
 	static utsname osInfo;
 #endif
 
-	static std::string&& getOSName();
+	static constexpr std::string_view getArchitecture();
+#if BOOST_OS_WINDOWS || BOOST_OS_MACOS
+	static constexpr std::string_view getOSName();
+#else
+	static std::string_view getOSName();
+#endif
 	static std::string&& getOSVersion();
 	static constexpr std::string_view getDefaultDatabase();
 	static ServerRef getInstance();

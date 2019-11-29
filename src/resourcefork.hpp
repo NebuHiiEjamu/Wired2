@@ -1,4 +1,47 @@
 #ifndef _RESOURCEFORK_H
 #define _RESOURCEFORK_H
 
+#include "common.hpp"
+
+enum class ResId : uint32
+{
+	ALRT = 0x414C5254,
+	APPL = 0x4150504C,
+	BNDL = 0x424E444C,
+	CNTL = 0x434E544C,
+	CODE = 0x434F4445,
+	CURS = 0x43555253,
+	DITL = 0x4449544C,
+	DLOG = 0x444C4F47,
+	FREF = 0x46524546,
+	ICON = 0x49434F4E,
+	MBAR = 0x4D424152,
+	MDEF = 0x4D444546,
+	MENU = 0x4D454E55,
+	MooV = 0x4D6F6F56,
+	PICT = 0x50494354,
+	PREF = 0x50524546,
+	STR = 0x53545220,
+	STRn = 0x53545223,
+	TEXT = 0x54455854,
+	TMPL = 0x544D504C,
+	WDEF = 0x57444546,
+	WIND = 0x57494E44,
+	alis = 0x616C6973,
+	cicn = 0x6369636E,
+	clut = 0x636C7574,
+	hfdr = 0x68666472,
+	icl8 = 0x69636C38,
+	icns = 0x69636E73,
+	kind = 0x6B696E64,
+	open = 0x6F70656E,
+	snd = 0x736E6420,
+	styl = 0x7374796C,
+	vers = 0x76657273
+};
+
+class ResourceFork
+{
+};
+
 #endif // _RESOURCEFORK_H

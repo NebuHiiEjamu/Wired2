@@ -12,8 +12,7 @@ int main(int argc, char **argv)
 {
 #if BOOST_OS_WINDOWS
 	Server::osVersionInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEXA);
-	GetNativeSystemInfo(&Server::systemInfo);
-	osError = GetVersionExA(&Server::osVersionInfo)
+	osError = GetVersionExA(&Server::osVersionInfo);
 #elif BOOST_OS_MACOS
 	Gestalt(gestaltSystemVersionMajor, &Server::osVersionMajor);
 	Gestalt(gestaltSystemVersionMinor, &Server::osVersionMinor);

@@ -73,80 +73,30 @@ Server::Server():
 {
 }
 
-std::string&& Server::getOSName()
+constexpr std::string_view Server::getArchitecture()
 {
-	std::string result;
-#if BOOST_OS_WINDOWS
-	result = "Windows ";
-	
-	if (osError != 0)
-	{
-		switch (osVersionInfo.dwMajorVersion)
-		{
-			case 5:
-				switch (osVersionInfo.dwMinorVersion)
-				{
-					case 0: result += "2000"; break;
-					case 1: result += "XP"; break;
-					case 2:
-						if ((osVersionInfo.wProductType == VER_NT_WORKSTATION) &&
-							(systemInfo.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64))
-							result += "XP Professional x64 Edition";
-						if (GetSystemMetrics(SM_SERVERR2) == 0)
-							result += "Server 2003";
-						else
-							result += "Server 2003 R2";
-						if (osVersionInfo.wSuiteMask & VER_SUITE_WH_SERVER)
-							result += "Home Server";
-						break;
-					default: ;
-				}
-				break;
-			case 6:
-				switch (osVersionInfo.dwMinorVersion)
-				{
-					case 0:
-						if (osVersionInfo.wProductType == VER_NT_WORKSTATION)
-							result += "Vista";
-						else
-							result += "Server 2008";
-						break;
-					case 1:
-						if (osVersionInfo.wProductType == VER_NT_WORKSTATION)
-							result += "7";
-						else
-							result += "Server 2008 R2";
-						break;
-					case 2:
-						if (osVersionInfo.wProductType == VER_NT_WORKSTATION)
-							result += "8";
-						else
-							result += "Server 2012";
-						break;
-					case 3:
-						if (osVersionInfo.wProductType == VER_NT_WORKSTATION)
-							result += "8.1";
-						else
-							result += "Server 2012 R2";
-						break;
-					default: ;
-				}
-				break;
-			case 10:
-				if (osVersionInfo.wProductType == VER_NT_WORKSTATION)
-					result += "10";
-				else
-					result += "Server 2016";
-				break;
-			default: ;
-		}
-	}
-#elif BOOST_OS_MACOS
-	result = "Mac OS X";
-#else
-	result = osInfo.sysname;
+#if BOOST_ARCH_X86_32
+	return "i386";
 #endif
-	return std::move(result)
+#if BOOST_ARCH_X86_64
+	return "x86_64";
+#endif
+	return "unknown";
+}
+
+#if BOOST_OS_WINDOWS || BOOST_OS_MACOS
+constexpr std::string_view Server::getOSName()
+#else
+std::string_view Server::getOSName()
+#endif
+{
+#if BOOST_OS_WINDOWS
+	return "Windows NT";
+#elif BOOST_OS_MACOS
+	return "Mac OS X";
+#else
+	return osInfo.sysname;
+#endif
 }
 
 std::string&& Server::getOSVersion()
